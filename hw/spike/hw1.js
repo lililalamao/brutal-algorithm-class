@@ -8,14 +8,14 @@ function Product(M1, M2) {
 
   let result = [];
 
-  for (let i = 0; i < M1.length; i++) {
+  for (let row = 0; row < M1.length; row++) {
     let rowArr = [];
     
     for (let col = 0; col < M2[0].length; col++) {
       let sum = 0;
 
       for (let j = 0; j < M2.length; j++) {
-          sum += (M1[i][j] * M2[j][col]);
+          sum += (M1[row][j] * M2[j][col]);
       }
       rowArr.push(sum);
     }
@@ -100,12 +100,13 @@ class Node {
   }
 
   insert(element, index) {
-    if (index == 0) {
+    if (index === 0) {
       let newNode = new Node(element);
       newNode.next = this;
       return newNode;
     }
-    return this.next = this.next.insert(element, index - 1);
+    this.next = this.next.insert(element, index - 1);
+    return this
   }
 }
 
@@ -189,17 +190,14 @@ function Test_LinkedList() {
   list.append(3);
   list.append(4);
   list.append(5);
-  // list.append_head(42);
-  list.printList()
+
+  list.printList();
 
   console.log("======================");
 
-  list.insert(100, 1);
-  list.insert(101, 0);
-  list.insert(200, 7);
-  list.insert(8, 8);
-  list.insert(42, 5);
-  list.printList()
+  list.insert(42, 2);
+  list.insert(42, 4);
+  list.printList();
 
 }
 
